@@ -22,14 +22,14 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         id="cordova-plugin-inappbrowser-popup-bridge"
-        version="4.1.1">
+        version="5.0.0">
 
     <name>InAppBrowser</name>
     <description>Cordova InAppBrowser with PopupBridge Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,in,app,browser,inappbrowser</keywords>
-    <repo>https://github.com/dpa99c/cordova-plugin-inappbrowser-popup-bridge</repo>
-    <issue>https://github.com/dpa99c/cordova-plugin-inappbrowser-popup-bridge/issues</issue>
+    <repo>https://github.com/ksuralta/cordova-plugin-inappbrowser-popup-bridge</repo>
+    <issue>https://github.com/ksuralta/cordova-plugin-inappbrowser-popup-bridge/issues</issue>
 
     <!-- android -->
     <platform name="android">
@@ -63,11 +63,11 @@
         <resource-file src="src/android/res/drawable-xxhdpi/ic_action_remove.png" target="res/drawable-xxhdpi/ic_action_remove.png" />
 
         <!-- PopupBridge -->
-        <config-file target="config.xml" parent="/*">
-            <preference name="android-minSdkVersion" value="16" tools:overrideLibrary="com.braintreepayments.popupbridge" />
-        </config-file>
+<!--         <config-file target="config.xml" parent="/*">
+            <preference name="android-minSdkVersion" value="21" tools:overrideLibrary="com.braintreepayments.popupbridge" />
+        </config-file> -->
 
-        <framework src="com.braintreepayments:popup-bridge:1.+" />
+        <framework src="com.braintreepayments.api:popup-bridge:4.+" />
 
         <hook type="after_prepare" src="src/android/update_manifest.js" />
 
