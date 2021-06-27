@@ -86,7 +86,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.HashMap;
 import java.util.StringTokenizer;
-import com.braintreepayments.popupbridge.PopupBridge;
+import com.braintreepayments.api.PopupBridgeClient;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class InAppBrowser extends CordovaPlugin {
@@ -154,7 +154,7 @@ public class InAppBrowser extends CordovaPlugin {
     private boolean fullscreen = true;
     private String[] allowedSchemes;
     private InAppBrowserClient currentClient;
-	private PopupBridge mPopupBridge;
+	private PopupBridgeClient mPopupBridge;
 
     /**
      * Executes the request and returns PluginResult.
@@ -943,7 +943,8 @@ public class InAppBrowser extends CordovaPlugin {
                 inAppWebView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     try{
-                        mPopupBridge = PopupBridge.newInstance(cordova.getActivity(), inAppWebView);
+                        String returnURLScheme = BuildConfig.APPLICATION_ID.toLowerCase().replace("_", "") + ".popupbridge";
+                        mPopupBridge = new PopupBridgeClient(cordova.getActivity(), inAppWebView, returnURLScheme);
                     }catch (Exception e){} //swallow exception
                 }
                 inAppWebView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
